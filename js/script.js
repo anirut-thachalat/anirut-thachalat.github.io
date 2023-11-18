@@ -228,7 +228,7 @@ function openMenu() {
 
     menu.style.top = "0"
     closeMemu.onclick = () => {
-        menu.style.top = "-100%"
+        menu.style.top = "-200%"
     }
     for (let i = 0; i < menu.children.length; i++) {
         menu.children[i].onclick = () => {
