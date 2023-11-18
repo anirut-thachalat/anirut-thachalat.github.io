@@ -1,0 +1,80 @@
+.user-modal {
+
+    @extend %modal;
+    display: flex;
+    justify-content: center;
+
+
+    .user-box {
+        position: relative;
+        background-color: $background-color;
+        width: 90%;
+        max-width: 500px;
+        height: 500px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+
+        form {
+            width: 100%;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+
+            .close-user {
+                @extend %close-modal;
+                top: -20px;
+                right: -10px;
+            }
+
+            .form-group {
+                text-align: left;
+
+                input {
+                    display: block;
+                    width: 100%;
+                    box-shadow: $boxshadow;
+                    padding: 10px;
+                    border-radius: 10px;
+                }
+
+            }
+
+
+
+            .sign-up {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $primary-color;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $primary-hover;
+                }
+            }
+
+            .login-icon {
+                color: $primary-color;
+
+                i {
+                    cursor: pointer;
+
+                    &:hover {
+                        color: $primary-hover;
+                    }
+                }
+            }
+
+
+
+
+
+        }
+
+
+
+    }
+
+}

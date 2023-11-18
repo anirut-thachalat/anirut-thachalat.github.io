@@ -1,0 +1,26 @@
+// variable
+@import './abstracts/variable';
+@import './base/base';
+
+
+//conponent
+@import './component/container';
+@import './component/cart';
+@import './component/modal';
+
+
+
+// layout
+@import './layout/navbar';
+@import'./layout/search';
+@import'./layout/user';
+@import'./layout/viewCart';
+@import'./layout/home';
+@import'./layout/feature';
+@import'./layout/new-arrival';
+@import'./layout/testimonial';
+@import'./layout/footer';
+
+//page
+@import './pages/product';
+@import './pages/checkout';

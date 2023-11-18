@@ -1,0 +1,42 @@
+.feature {
+    margin-top: 60px;
+
+    .container {
+        h2 {
+            color: $primary-color;
+            border-bottom: 5px solid $primary-hover;
+            margin: 10px;
+        }
+
+        .swiper {
+            padding: 1rem;
+
+            .swiper-wrapper {
+
+                margin-bottom: 2rem;
+
+                .swiper-slide {
+                    @extend %cart-items;
+                }
+
+                .feature-img {
+                    @extend %cart-img;
+                }
+
+                .feature-title {
+                    @extend %cart-title;
+                }
+
+                .feature-price {
+                    @extend %cart-price;
+                }
+
+                .feature-view-cart {
+                    @extend %view-cart;
+                }
+
+            }
+        }
+    }
+
+}

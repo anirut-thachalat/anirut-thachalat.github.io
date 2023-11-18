@@ -1,0 +1,40 @@
+.new-arrival {
+    margin-top: 60px;
+
+    .container {
+        h2 {
+            color: $primary-color;
+            border-bottom: 5px solid $primary-hover;
+            margin: 10px;
+        }
+
+        .arrival-box {
+
+            .arrival-cart {
+                @extend %cart;
+
+                .arrival-cart-item {
+                    @extend %cart-items;
+                }
+
+                .arrival-img {
+                    @extend %cart-img;
+                }
+
+                .arrival-title {
+                    @extend %cart-title;
+                }
+
+                .arrival-price {
+                    @extend %cart-price;
+                }
+
+                .arrival-view-cart {
+                    @extend %view-cart;
+                }
+
+            }
+        }
+    }
+
+}

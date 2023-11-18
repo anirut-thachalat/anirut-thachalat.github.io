@@ -1,0 +1,40 @@
+.testimonial {
+    width: 100%;
+    min-height: 300px;
+    margin: 3rem 0;
+
+    .container {
+
+        h2 {
+            color: $primary-color;
+            border-bottom: 5px solid $primary-hover;
+            margin: 10px;
+        }
+    }
+
+    .testimomial-box {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 10px;
+        text-align: center;
+
+        .testimonial-info {
+
+            border: 1px solid $primary-color;
+            height: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: $boxshadow;
+            font-size: 14px;
+
+            img {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+
+            }
+
+        }
+
+    }
+}
