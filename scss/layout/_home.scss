@@ -50,6 +50,10 @@ main {
                 &:hover {
                     background-color: $primary-hover;
                 }
+
+                a {
+                    color: $text-color;
+                }
             }
 
 

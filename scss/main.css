@@ -92,7 +92,7 @@ body {
 
 .view-cart, .user-modal, .search-modal {
   position: fixed;
-  top: -100%;
+  top: -200%;
   left: 0;
   width: 100%;
   min-height: 100%;
@@ -390,11 +390,11 @@ nav .nav-box .nav-icon #bars-icon {
   align-self: center;
 }
 .view-cart .view-box .view-box-info .quantity {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 600;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  justify-content: space-between;
+  gap: 1rem;
 }
 .view-cart .view-box .view-box-info .quantity .view-price {
   color: red;
@@ -496,6 +496,9 @@ main .main-box .main-box-info button {
 main .main-box .main-box-info button:hover {
   background-color: #f77f00;
 }
+main .main-box .main-box-info button a {
+  color: #000000;
+}
 
 .feature {
   margin-top: 60px;
@@ -546,6 +549,8 @@ main .main-box .main-box-info button:hover {
 .testimonial .testimomial-box .testimonial-info img {
   width: 60px;
   height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 50%;
 }
 

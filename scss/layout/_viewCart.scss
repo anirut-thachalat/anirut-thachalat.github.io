@@ -70,15 +70,18 @@
             }
 
             .quantity {
-                font-size: 1.5rem;
-                font-weight: 700;
+                font-size: 1.3rem;
+                font-weight: 600;
                 display: flex;
-                justify-content: center;
-                gap: 1.5rem;
+                justify-content: space-between;
+                gap: 1rem;
+
 
                 .view-price {
 
                     color: red;
+
+
                 }
 
                 button {
