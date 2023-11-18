@@ -393,8 +393,7 @@ nav .nav-box .nav-icon #bars-icon {
   font-size: 1.3rem;
   font-weight: 600;
   display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: space-around;
 }
 .view-cart .view-box .view-box-info .quantity .view-price {
   color: red;
