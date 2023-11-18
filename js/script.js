@@ -8,7 +8,6 @@ async function getApi() {
         search()
         feature()
         arrival()
-        console.log(data)
 
     } catch (error) {
         console.log(error.message)
@@ -212,44 +211,11 @@ function viewCart(index) {
             quantity: sum,
             totol: totol
         }
-        console.log(objCart)
-
 
     }
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -266,7 +232,7 @@ function openMenu() {
     }
     for (let i = 0; i < menu.children.length; i++) {
         menu.children[i].onclick = () => {
-            menu.style.top = "-100%"
+            menu.style.top = "-200%"
         }
     }
 
@@ -278,7 +244,7 @@ function openSearch() {
     let closeSearch = document.querySelector(".close-search")
     search.style.top = "0"
     closeSearch.onclick = () => {
-        search.style.top = "-100%"
+        search.style.top = "-200%"
     }
     //search-product
     let textInput = document.querySelector("#text-input")
@@ -311,7 +277,7 @@ function openUser() {
     let closeUser = document.querySelector(".close-user")
     userModal.style.top = "0"
     closeUser.onclick = () => {
-        userModal.style.top = "-100%"
+        userModal.style.top = "-200%"
     }
 }
 
