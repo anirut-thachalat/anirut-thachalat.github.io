@@ -8,6 +8,7 @@ async function getApi() {
         search()
         feature()
         arrival()
+        console.log(data)
 
     } catch (error) {
         console.log(error.message)
@@ -134,9 +135,73 @@ function product() {
 product()
 
 
+
+
+
+/*==================  open-menu ==================*/
+function openMenu() {
+    let menu = document.querySelector(".nav-menu")
+    let closeMemu = document.querySelector(".close-menu")
+
+    menu.style.top = "0"
+    closeMemu.onclick = () => {
+        menu.style.top = "-200%"
+    }
+    for (let i = 0; i < menu.children.length; i++) {
+        menu.children[i].onclick = () => {
+            menu.style.top = "-200%"
+        }
+    }
+
+}
+
+/*==============  open-search =====================*/
+function openSearch() {
+    let search = document.querySelector(".search-modal")
+    let closeSearch = document.querySelector(".close-search")
+    search.style.top = "0"
+    closeSearch.onclick = () => {
+        search.style.top = "-200%"
+    }
+    //search-product
+    let textInput = document.querySelector("#text-input")
+    textInput.onkeyup = (e) => {
+        let filter = e.target.value.toUpperCase()
+        let ul = document.querySelector(".search-list")
+        let li = ul.children
+
+        for (let i = 0; i < li.length; i++) {
+            let textValue = li[i].children[1].innerHTML.toUpperCase()
+
+            if (textValue.indexOf(filter) > -1) {
+                li[i].style.display = ""
+
+            } else {
+                li[i].style.display = "none"
+
+            }
+
+
+        }
+    }
+
+}
+
+
+/*========================== open user==================== */
+function openUser() {
+
+    let userModal = document.querySelector(".user-modal")
+    let closeUser = document.querySelector(".close-user")
+    userModal.style.top = "0"
+    closeUser.onclick = () => {
+        userModal.style.top = "-200%"
+    }
+}
+
+
+
 // ================ view cart ==================//
-
-
 
 function viewCart(index) {
 
@@ -216,69 +281,3 @@ function viewCart(index) {
 
 
 }
-
-
-
-
-
-/*==================  open-menu ==================*/
-function openMenu() {
-    let menu = document.querySelector(".nav-menu")
-    let closeMemu = document.querySelector(".close-menu")
-
-    menu.style.top = "0"
-    closeMemu.onclick = () => {
-        menu.style.top = "-200%"
-    }
-    for (let i = 0; i < menu.children.length; i++) {
-        menu.children[i].onclick = () => {
-            menu.style.top = "-200%"
-        }
-    }
-
-}
-
-/*==============  open-search =====================*/
-function openSearch() {
-    let search = document.querySelector(".search-modal")
-    let closeSearch = document.querySelector(".close-search")
-    search.style.top = "0"
-    closeSearch.onclick = () => {
-        search.style.top = "-200%"
-    }
-    //search-product
-    let textInput = document.querySelector("#text-input")
-    textInput.onkeyup = (e) => {
-        let filter = e.target.value.toUpperCase()
-        let ul = document.querySelector(".search-list")
-        let li = ul.children
-
-        for (let i = 0; i < li.length; i++) {
-            let textValue = li[i].children[1].innerHTML.toUpperCase()
-
-            if (textValue.indexOf(filter) > -1) {
-                li[i].style.display = ""
-
-            } else {
-                li[i].style.display = "none"
-
-            }
-
-
-        }
-    }
-
-}
-
-/*========================== open user==================== */
-function openUser() {
-
-    let userModal = document.querySelector(".user-modal")
-    let closeUser = document.querySelector(".close-user")
-    userModal.style.top = "0"
-    closeUser.onclick = () => {
-        userModal.style.top = "-200%"
-    }
-}
-
-

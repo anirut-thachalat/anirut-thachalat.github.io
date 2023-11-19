@@ -53,9 +53,12 @@ nav {
 
         .nav-icon {
             display: flex;
+            text-align: center;
             gap: 1.5rem;
 
             i {
+                display: flex;
+                align-items: center;
                 cursor: pointer;
 
                 &:hover {
@@ -63,8 +66,14 @@ nav {
                 }
             }
 
+
             #cart-icon {
+                cursor: pointer;
                 position: relative;
+
+                &:hover {
+                    color: $primary-hover;
+                }
 
                 #count {
                     position: absolute;
@@ -72,7 +81,10 @@ nav {
                     right: -10px;
                     color: red;
                 }
+
+
             }
+
 
             #bars-icon {
                 display: none;
@@ -142,9 +154,13 @@ nav {
             }
 
             .nav-icon {
+                text-align: center;
+
                 #bars-icon {
                     display: initial;
                 }
+
+
             }
         }
     }
