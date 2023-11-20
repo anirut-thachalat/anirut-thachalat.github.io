@@ -8,7 +8,6 @@ async function getApi() {
         search()
         feature()
         arrival()
-        console.log(data)
 
     } catch (error) {
         console.log(error.message)
@@ -33,6 +32,7 @@ function search() {
     }
 
 }
+
 // =============  feature =============//
 function feature() {
     for (let i = 0; i < 6; i++) {
@@ -111,6 +111,7 @@ function arrival() {
 
 }
 
+
 // ============= product API ============== //
 function product() {
     let data = JSON.parse(localStorage.getItem("data"))
@@ -132,11 +133,6 @@ function product() {
 
     }
 }
-product()
-
-
-
-
 
 /*==================  open-menu ==================*/
 function openMenu() {
@@ -240,17 +236,16 @@ function viewCart(index) {
     let increase = document.querySelector(".increase")
     let num = document.querySelector(".num")
     let price = parseFloat(viewPrice.innerHTML)
-    let totol = price
+    let total = price
 
     increase.onclick = () => {
         if (sum < 10) {
             sum++
             num.innerHTML = sum
-            totol = price * sum
-            viewPrice.innerHTML = `${totol.toFixed(2)} $`
+            total = price * sum
+            viewPrice.innerHTML = `${total.toFixed(2)} $`
 
         }
-
 
 
     }
@@ -258,8 +253,8 @@ function viewCart(index) {
         if (sum > 1) {
             sum--
             num.innerHTML = sum
-            totol = price * sum
-            viewPrice.innerHTML = `${totol.toFixed(2)} $`
+            total = price * sum
+            viewPrice.innerHTML = `${total.toFixed(2)} $`
 
         }
 
@@ -268,16 +263,137 @@ function viewCart(index) {
     //add cart
     let addCart = document.querySelector(".add-cart")
     addCart.onclick = () => {
+
         let objCart = {
+            id: index,
             img: data[index].image,
             name: data[index].title,
-            size: size.value.toUpperCase(),
+            size: size.value,
             price: price,
             quantity: sum,
-            totol: totol
+            total: total
         }
+        addToCart(objCart)
+
 
     }
 
 
 }
+//============================== add to cart=====================//
+let arryCart = []
+function addToCart(el) {
+    let check = true
+    if (check) {
+
+        arryCart.push(el)
+
+    }
+    console.log(arryCart.length)
+
+    // show content
+    let countItem = document.querySelector(".count-item")
+    let navCount = document.querySelector("#nav-count")
+
+    countItem.innerHTML = arryCart.length
+    navCount.innerHTML = arryCart.length
+
+    let ul = document.querySelector(".cart-item-list")
+    let li = document.createElement("li")
+    let subTotal = document.querySelector(".sub-total")
+
+    let subTotalNum = 0
+
+    let totalChange = 0
+
+
+
+
+    for (let i = 0; i < arryCart.length; i++) {
+
+        li.innerHTML = ` 
+        <div class="cart-item-img">
+            <img src="${arryCart[i].img}" alt="${arryCart[i].name}">
+        </div>
+        <div class="cart-item-info">
+            <p> ${arryCart[i].name}</p>
+        <div class="item-option">
+            <p> size : ${arryCart[i].size}</p>
+
+            <div class="item-quantity">
+                <span class="item-price" style="color: red;"> ${arryCart[i].price}$</span>
+                <button class="item-reduce">-</button>
+                <span class="item-num"> ${arryCart[i].quantity} </span>
+                <button class="item-increase"> +</button>
+            </div>
+            <div class="item-total-box">
+                <span> total : <span class="item-total" style="color: green;">${arryCart[i].total}$</span> </span>
+                <i class="fa-solid fa-delete-left"></i>
+            </div>
+        </div>
+    </div>`
+
+        ul.append(li)
+        subTotalNum = subTotalNum + arryCart[i].total
+        subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
+
+        // btn +  btn -//
+        let itemReduce = document.querySelectorAll(".item-reduce")
+        let itemIncrease = document.querySelectorAll(".item-increase")
+        let itemNum = document.querySelectorAll(".item-num")
+        let itemTotal = document.querySelectorAll(".item-total")
+
+
+        // btn + 
+        itemIncrease[i].onclick = () => {
+            if (arryCart[i].quantity < 10) {
+                arryCart[i].quantity = arryCart[i].quantity + 1
+                itemNum[i].innerHTML = arryCart[i].quantity
+                totalChange = (arryCart[i].quantity * arryCart[i].price).toFixed(2)
+                itemTotal[i].innerHTML = `${totalChange} $`
+                subTotalNum = subTotalNum + arryCart[i].price
+                subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
+
+            }
+            // btn -
+            itemReduce[i].onclick = () => {
+                if (arryCart[i].quantity > 1) {
+                    arryCart[i].quantity = arryCart[i].quantity - 1
+                    itemNum[i].innerHTML = arryCart[i].quantity
+                    totalChange = (arryCart[i].quantity * arryCart[i].price).toFixed(2)
+                    itemTotal[i].innerHTML = `${totalChange} $`
+                    subTotalNum = subTotalNum - arryCart[i].price
+                    subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
+
+                }
+            }
+
+
+
+        }
+
+
+    }
+
+
+}
+// =====================open add cart====================  //
+let closeItem = document.querySelector(".close-item")
+let cartItem = document.querySelector(".cart-item-modal")
+let cartIcon = document.querySelector("#cart-icon")
+let navCount = document.querySelector("#nav-count")
+
+closeItem.onclick = () => {
+    cartItem.style.top = "-200%"
+}
+cartIcon.onclick = () => {
+    if (navCount.innerHTML === "0") {
+        alert("no product")
+    } else {
+        cartItem.style.top = "0"
+    }
+
+
+}
+
+product()

@@ -176,7 +176,7 @@ nav .nav-box .nav-icon #cart-icon {
 nav .nav-box .nav-icon #cart-icon:hover {
   color: #f77f00;
 }
-nav .nav-box .nav-icon #cart-icon #count {
+nav .nav-box .nav-icon #cart-icon #nav-count {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -346,9 +346,6 @@ nav .nav-box .nav-icon #bars-icon {
   color: #f77f00;
 }
 
-.cart-item-modal {
-  top: 0;
-}
 .cart-item-modal .cart-item-box {
   position: relative;
   width: 90%;
@@ -379,15 +376,19 @@ nav .nav-box .nav-icon #bars-icon {
   padding: 5px;
   border-radius: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   gap: 1rem;
 }
 .cart-item-modal .cart-item-box .cart-item-list li .cart-item-img img {
-  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
   height: 60px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 10px;
+}
+.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info {
+  flex-grow: 1;
 }
 .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info p {
   display: -webkit-box;
@@ -400,14 +401,11 @@ nav .nav-box .nav-icon #bars-icon {
 .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-option {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
 }
-.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-option select {
-  background-color: #fff;
-  padding: 5px;
-  border-radius: 10px;
-  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-option p {
   font-weight: 600;
 }
 .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-option .item-quantity {
@@ -420,41 +418,42 @@ nav .nav-box .nav-icon #bars-icon {
   border-radius: 50%;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-option .item-quantity button:hover {
   background-color: #f77f00;
 }
-.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total {
+.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total-box {
   margin-top: 10px;
   text-align: end;
 }
 @media (max-width: 586px) {
-  .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total {
+  .cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total-box {
     flex-grow: 1;
   }
 }
-.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total i {
+.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total-box i {
   margin: 0 10px;
   font-size: 2rem;
   cursor: pointer;
 }
-.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total i:hover {
+.cart-item-modal .cart-item-box .cart-item-list li .cart-item-info .item-total-box i:hover {
   color: #f77f00;
 }
-.cart-item-modal .cart-item-box .sub-total {
+.cart-item-modal .cart-item-box .sub-total-box {
   width: 90%;
   margin: 0 auto;
   text-align: end;
   padding: 10px;
 }
-.cart-item-modal .cart-item-box .sub-total button {
+.cart-item-modal .cart-item-box .sub-total-box button {
   padding: 10px;
   border-radius: 10px;
   background-color: #fcbf49;
   font-weight: 700;
   cursor: pointer;
 }
-.cart-item-modal .cart-item-box .sub-total button:hover {
+.cart-item-modal .cart-item-box .sub-total-box button:hover {
   background-color: #f77f00;
 }
 

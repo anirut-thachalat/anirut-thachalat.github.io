@@ -1,6 +1,5 @@
 .cart-item-modal {
     @extend %modal;
-    top: 0;
 
     .cart-item-box {
         position: relative;
@@ -36,20 +35,24 @@
                 padding: 5px;
                 border-radius: 10px;
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: space-around;
                 gap: 1rem;
 
 
                 .cart-item-img {
                     img {
-                        width: 60px;
+                        min-width: 60px;
+                        max-width: 60px;
                         height: 60px;
-                        object-fit: cover;
+                        object-fit: contain;
                         border-radius: 10px;
+
                     }
                 }
 
                 .cart-item-info {
+                    flex-grow: 1;
+
                     p {
 
                         display: -webkit-box;
@@ -63,15 +66,13 @@
                     .item-option {
                         display: flex;
                         justify-content: space-evenly;
+                        align-items: center;
                         flex-wrap: wrap;
                         gap: 1rem;
 
 
-                        select {
-                            background-color: $background-color;
-                            padding: 5px;
-                            border-radius: 10px;
-                            box-shadow: $boxshadow;
+                        p {
+
                             font-weight: 600;
                         }
 
@@ -85,6 +86,7 @@
                                 border-radius: 50%;
                                 font-weight: 600;
                                 cursor: pointer;
+                                box-shadow: $boxshadow;
 
                                 &:hover {
                                     background-color: $primary-hover;
@@ -93,7 +95,7 @@
                         }
                     }
 
-                    .item-total {
+                    .item-total-box {
 
                         margin-top: 10px;
                         text-align: end;
@@ -119,7 +121,7 @@
             }
         }
 
-        .sub-total {
+        .sub-total-box {
 
             width: 90%;
             margin: 0 auto;
