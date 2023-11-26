@@ -267,8 +267,6 @@
     <script src="/js/script.js"></script>
     <script>
         async function checkOut() {
-
-            await search()
             renderCart()
             let totalPrice = JSON.parse(localStorage.getItem("total"))
             let checkoutPrice = document.querySelector('.checkout-price')
