@@ -5,7 +5,11 @@ async function getApi() {
     const res = await fetch('https://fakestoreapi.com/products/')
     const data = await res.json()
 
+
     localStorage.setItem("data", JSON.stringify(data))
+    await search()
+    await feature()
+    await arrival()
 
 }
 getApi()
