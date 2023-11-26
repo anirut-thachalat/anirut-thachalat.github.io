@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-commerce</title>
+    <link rel="stylesheet" href="scss/main.css" />
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+
+<body>
+    <!--================== navbar ===================-->
+    <nav>
+        <div class="container">
+            <div class="nav-box">
+                <div class="logo">
+                    <a href="#"><i class="fa-solid fa-bag-shopping"></i> <span>shopcart</span></a>
+                </div>
+                <ul class="nav-menu">
+                    <button class="close-menu">X</button>
+                    <li><a href="/index.html">home</a></li>
+                    <li><a href="/product.html">product</a></li>
+                    <li><a href="#testimonial">testimonial</a></li>
+                </ul>
+                <div class="nav-icon">
+                    <i id="search-icon" class="fa-solid fa-magnifying-glass" onclick="openSearch()"></i>
+                    <i id="user-icon" class="fa-solid fa-user" onclick="openUser()"></i>
+                    <i id="cart-icon" class="fa-solid fa-cart-shopping"><span id="nav-count">0</span></i>
+                    <i id="bars-icon" class="fa-solid fa-bars" onclick="openMenu()"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--================== end navbar ===================-->
+
+
+    <!-- search-modal -->
+    <div class="search-modal">
+        <button class="close-search">X</button>
+        <div class="search-box">
+            <form>
+                <input type="text" id="text-input" placeholder="search product" />
+            </form>
+            <ul class="search-list">
+                <!-- api -->
+            </ul>
+        </div>
+    </div>
+    <!--  end search-modal-->
+    <!-- user-modal -->
+    <div class="user-modal">
+        <div class="user-box">
+            <form>
+                <button class="close-user">X</button>
+                <h3>signup</h3>
+                <div class="form-group">
+                    <label>email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <input type="password" id="password" required>
+                </div>
+
+                <button class="sign-up">SIGN UP</button>
+                <hr>
+                <p>OR</p>
+                <div class="login-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-github"></i>
+                </div>
+                <div class="info">
+                    <span> already a user? <a href="#">LOGIN</a></span>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- end user modal -->
+
+    <!--====================  view cart ======================-->
+    <section class="view-cart">
+        <div class="view-box">
+            <button class="close-view">X</button>
+            <div class="view-box-img">
+                <img src="/img/img-home.avif" alt="">
+            </div>
+            <div class="view-box-info">
+                <h4>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</h4>
+                <p class="descript">Your perfect pack for everyday use and walks in the forest. Stash your laptop
+                    (up to
+                    15 inches) in
+                    the padded sleeve, your everyday </p>
+
+                <select name="size" id="Size">
+                    <option value="s" selected>size s</option>
+                    <option value="m">size m</option>
+                    <option value="l">size l</option>
+                </select>
+
+                <div class="quantity">
+                    <span class="view-price"> 10$</span>
+                    <button class="reduce"> -</button>
+                    <span class="num"> 1 </span>
+                    <button class="increase"> +</button>
+                </div>
+
+                <button class="add-cart"> add to cart</button>
+
+            </div>
+        </div>
+    </section>
+    <!--==================== end view cart ======================-->
+
+    <!-- cart modal -->
+
+    <div class="cart-item-modal">
+        <div class="cart-item-box">
+            <button class="close-item">X</button>
+            <h2> your cart (<span class="count-item"> 3 </span> item )</h2>
+            <ul class="cart-item-list">
+                <!-- api -->
+            </ul>
+            <div class="sub-total-box">
+                <h3>sub total : <span class="sub-total" style="color: green;">0</span></h3>
+                <a href="/checkout.html" class="btn-checkout"> check out</a>
+            </div>
+        </div>
+    </div>
+    <!-- end cart -modal -->
+
+
+    <!-- =================================check out========================== -->
+    <div class="check-out">
+        <div class="container">
+            <div class="check-out-box">
+                <h3> check out</h3>
+                <div class="check-out-icon">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-paypal"></i>
+                    <i class="fa-brands fa-cc-amazon-pay"></i>
+                    <i class="fa-brands fa-google-pay"></i>
+                    <i class="fa-brands fa-apple-pay"></i>
+                </div>
+                <form>
+                    <label for="card-number"> card number</label>
+                    <div class="check-group">
+                        <input type="number" id="card-num" placeholder="card number">
+                        <i class="fa-regular fa-credit-card"></i>
+                    </div>
+
+                    <label for="card-date"> expiry date</label>
+                    <div class="check-group">
+                        <input type="date" id="date" value="2023-12-12">
+                    </div>
+                    <label for="card-cvv"> cvv</label>
+                    <div class="check-group">
+                        <input type="cvv" id="cvv" placeholder="cvv">
+                        <i class="fa-solid fa-question"></i>
+                    </div>
+                    <label for="email"> email</label>
+                    <div class="check-group">
+                        <input type="email" id="cvv" placeholder="example@gmail.con">
+
+                    </div>
+                    <p class="checkout-price"> 0 $</p>
+                    <a href="/index.html" class="pay">pay now</a>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ================================= end check out========================== -->
+
+
+
+
+    <!--==================== testimonial ======================-->
+    <section class="testimonial" id="testimonial-page2">
+        <div class="container">
+            <h2>testimomial</h2>
+            <div class="testimomial-box">
+                <div class="testimonial-info">
+                    <img src="/img/img-home.avif" alt="testimomial">
+                    <h3> prayut</h3>
+                    <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptate odit repellendus fugit
+                        molestiae inventore, id tempore quam ea repellat?"</p>
+                </div>
+                <div class="testimonial-info">
+                    <img src="/img/img-home.avif" alt="testimomial">
+                    <h3> pravit</h3>
+                    <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptate odit repellendus fugit
+                        molestiae inventore, id tempore quam ea repellat?"</p>
+                </div>
+                <div class="testimonial-info">
+                    <img src="/img/img-home.avif" alt="testimomial">
+                    <h3> pitar</h3>
+                    <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum voluptate odit repellendus fugit
+                        molestiae inventore, id tempore quam ea repellat?"</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--==================== end testimonial ======================-->
+
+    <!--====================  footer ======================-->
+    <footer>
+        <div class="container">
+            <div class="footer-box">
+                <div class="footer-left">
+                    <h3>shopcart<span>Developer</span></h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">prduct</a></li>
+                        <li><a href="#">feature</a></li>
+                        <li><a href="#">newarrival</a></li>
+                        <li><a href="#">testimonial</a></li>
+                    </ul>
+                    <p class="footer-company-name">Copyright © 2023 All rights reserved</p>
+                </div>
+
+                <div class="footer-center">
+                    <div>
+                        <i class="fa fa-map-marker"></i>
+                        <p>bangkok thailand</p>
+                    </div>
+
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <p>+9123456789</p>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <p><a>shopcart@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-company-about">
+                        <span>About the company</span>
+                        <strong>shopcartDeveloper</strong> is a Youtube channel where you can find more creative CSS
+                        AnimationsandEffects along withHTML, JavaScript and Projects using C/C++.
+                    </p>
+                    <div class="footer-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+
+    <!--==================== end footer ======================-->
+
+    <script src="/js/script.js"></script>
+    <script>
+        async function checkOut() {
+
+            await search()
+            renderCart()
+            let totalPrice = JSON.parse(localStorage.getItem("total"))
+            let checkoutPrice = document.querySelector('.checkout-price')
+            checkoutPrice.innerHTML = `${totalPrice.toFixed(2)}$`
+            let pay = document.querySelector(".pay")
+
+            pay.onclick = () => {
+
+                alert("payment completed")
+                localStorage.removeItem("product")
+
+
+
+
+            }
+
+        }
+        checkOut()
+    </script>
+</body>
+
+</html>

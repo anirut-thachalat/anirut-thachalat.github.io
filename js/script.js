@@ -1,20 +1,15 @@
 
+
+
 async function getApi() {
     const res = await fetch('https://fakestoreapi.com/products/')
     const data = await res.json()
-    try {
 
-        localStorage.setItem("data", JSON.stringify(data))
-        search()
-        feature()
-        arrival()
+    localStorage.setItem("data", JSON.stringify(data))
 
-    } catch (error) {
-        console.log(error.message)
-    }
 }
-
 getApi()
+
 
 /*========== search API ==================*/
 function search() {
@@ -35,11 +30,9 @@ function search() {
 
 // =============  feature =============//
 function feature() {
+    let json = JSON.parse(localStorage.getItem("data"))
     for (let i = 0; i < 6; i++) {
-        let json = JSON.parse(localStorage.getItem("data"))
-        let swiperSlide = document.querySelectorAll(".swiper-slide")
-
-
+        let swiperSlide = document.getElementsByClassName("swiper-slide")
         swiperSlide[i].innerHTML = `
                                 <div class="feature-img">
                                    <img src="${json[i].image}" alt="${json[i].title}">
@@ -110,29 +103,30 @@ function arrival() {
     }
 
 }
-
-
 // ============= product API ============== //
 function product() {
-    let data = JSON.parse(localStorage.getItem("data"))
-    for (let i = 0; i < data.length; i++) {
+    let json = JSON.parse(localStorage.getItem("data"))
+    for (let i = 0; i < json.length; i++) {
         let product = document.querySelector(".product-cart")
         let productlItem = document.createElement("div")
         productlItem.classList.add("product-cart-item")
         productlItem.innerHTML = `
                         <div class="product-img">
-                           <img src="${data[i].image}" alt="${data[i].title}">
+                           <img src="${json[i].image}" alt="${json[i].title}">
                         </div>
-                        <p class="product-title">${data[i].title} </p>
-                        <span class="product-price">${data[i].price}$</span>
+                        <p class="product-title">${json[i].title} </p>
+                        <span class="product-price">${json[i].price}$</span>
                         <button class="product-view-cart"> view</button >`
         product.appendChild(productlItem)
         productlItem.children[3].onclick = () => {
             viewCart(i)
+
+
         }
 
     }
 }
+
 
 /*==================  open-menu ==================*/
 function openMenu() {
@@ -196,8 +190,14 @@ function openUser() {
 }
 
 
+// get arry
 
-// ================ view cart ==================//
+
+
+
+
+
+// ================ open view cart ==================//
 
 function viewCart(index) {
 
@@ -262,8 +262,8 @@ function viewCart(index) {
     num.innerHTML = sum
     //add cart
     let addCart = document.querySelector(".add-cart")
-    addCart.onclick = () => {
 
+    addCart.onclick = () => {
         let objCart = {
             id: index,
             img: data[index].image,
@@ -273,110 +273,147 @@ function viewCart(index) {
             quantity: sum,
             total: total
         }
+
         addToCart(objCart)
-
-
+        closeView.click()
     }
 
 
 }
+
 //============================== add to cart=====================//
 let arryCart = []
-function addToCart(el) {
-    let check = true
-    if (check) {
+function getArry() {
 
-        arryCart.push(el)
-
+    let getArry = JSON.parse(localStorage.getItem("product"))
+    if (getArry != null) {
+        arryCart = getArry
+        renderCart()
+    } else {
+        arryCart = []
     }
-    console.log(arryCart.length)
-
-    // show content
-    let countItem = document.querySelector(".count-item")
-    let navCount = document.querySelector("#nav-count")
-
-    countItem.innerHTML = arryCart.length
-    navCount.innerHTML = arryCart.length
-
-    let ul = document.querySelector(".cart-item-list")
-    let li = document.createElement("li")
-    let subTotal = document.querySelector(".sub-total")
-
-    let subTotalNum = 0
-
-    let totalChange = 0
 
 
-
-
+}
+getArry()
+function addToCart(obj) {
+    let checkArry = true
     for (let i = 0; i < arryCart.length; i++) {
-
-        li.innerHTML = ` 
-        <div class="cart-item-img">
-            <img src="${arryCart[i].img}" alt="${arryCart[i].name}">
-        </div>
-        <div class="cart-item-info">
-            <p> ${arryCart[i].name}</p>
-        <div class="item-option">
-            <p> size : ${arryCart[i].size}</p>
-
-            <div class="item-quantity">
-                <span class="item-price" style="color: red;"> ${arryCart[i].price}$</span>
-                <button class="item-reduce">-</button>
-                <span class="item-num"> ${arryCart[i].quantity} </span>
-                <button class="item-increase"> +</button>
-            </div>
-            <div class="item-total-box">
-                <span> total : <span class="item-total" style="color: green;">${arryCart[i].total}$</span> </span>
-                <i class="fa-solid fa-delete-left"></i>
-            </div>
-        </div>
-    </div>`
-
-        ul.append(li)
-        subTotalNum = subTotalNum + arryCart[i].total
-        subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
-
-        // btn +  btn -//
-        let itemReduce = document.querySelectorAll(".item-reduce")
-        let itemIncrease = document.querySelectorAll(".item-increase")
-        let itemNum = document.querySelectorAll(".item-num")
-        let itemTotal = document.querySelectorAll(".item-total")
-
-
-        // btn + 
-        itemIncrease[i].onclick = () => {
-            if (arryCart[i].quantity < 10) {
-                arryCart[i].quantity = arryCart[i].quantity + 1
-                itemNum[i].innerHTML = arryCart[i].quantity
-                totalChange = (arryCart[i].quantity * arryCart[i].price).toFixed(2)
-                itemTotal[i].innerHTML = `${totalChange} $`
-                subTotalNum = subTotalNum + arryCart[i].price
-                subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
-
-            }
-            // btn -
-            itemReduce[i].onclick = () => {
-                if (arryCart[i].quantity > 1) {
-                    arryCart[i].quantity = arryCart[i].quantity - 1
-                    itemNum[i].innerHTML = arryCart[i].quantity
-                    totalChange = (arryCart[i].quantity * arryCart[i].price).toFixed(2)
-                    itemTotal[i].innerHTML = `${totalChange} $`
-                    subTotalNum = subTotalNum - arryCart[i].price
-                    subTotal.innerHTML = `${subTotalNum.toFixed(2)} $`
-
-                }
-            }
-
-
+        if (arryCart[i].id == obj.id && arryCart[i].size == obj.size) {
+            checkArry = false
+            arryCart[i].quantity = arryCart[i].quantity + obj.quantity
+            arryCart[i].total = arryCart[i].quantity * arryCart[i].price
 
         }
 
+    }
+    if (checkArry) {
+
+        arryCart.push(obj)
 
     }
 
+    renderCart()
 
 }
+
+
+
+
+function renderCart() {
+
+    // navbar cart count
+    let navCount = document.querySelector("#nav-count")
+    navCount.innerHTML = arryCart.length
+
+    //count item
+    let countItem = document.querySelector(".count-item")
+    countItem.innerHTML = arryCart.length
+
+
+    let ul = document.querySelector(".cart-item-list")
+    ul.innerHTML = ""
+    let subTotalNum = 0
+    for (let i = 0; i < arryCart.length; i++) {
+        let li = document.createElement("li")
+        li.innerHTML = ` <div class="cart-item-img">
+        <img src="${arryCart[i].img}" alt="${arryCart[i].name}">
+    </div>
+    <div class="cart-item-info">
+        <p> ${arryCart[i].name}</p>
+         <div class="item-option">
+               <p> size :${arryCart[i].size}</p>
+     
+               <div class="item-quantity">
+                  <span class="item-price" style="color: red;"> ${arryCart[i].price}$</span>
+                  <button class="item-reduce">-</button>
+                  <span class="item-num"> ${arryCart[i].quantity} </span>
+                  <button class="item-increase"> +</button>
+               </div>
+               <div class="item-total-box">
+                  <span> total : <span class="item-total" style="color: green;"> ${arryCart[i].total.toFixed(2)} $</span> </span>
+                  <i class="fa-solid fa-delete-left"></i>
+                </div>
+        </div>
+    </div>`
+
+        ul.appendChild(li)
+
+        // sub total
+        subTotalNum = subTotalNum + arryCart[i].total
+        let subTotal = document.querySelector(".sub-total")
+        subTotal.innerHTML = `${subTotalNum.toFixed(2)}$`
+
+
+
+        // edit quantity
+        function editQuantity() {
+            let decrease = document.querySelectorAll(".item-reduce")
+            let increase = document.querySelectorAll(".item-increase")
+
+            decrease[i].onclick = () => {
+                if (arryCart[i].quantity > 1) {
+                    arryCart[i].quantity--
+                    arryCart[i].total = arryCart[i].total - arryCart[i].price
+                    renderCart()
+                }
+            }
+            increase[i].onclick = () => {
+                if (arryCart[i].quantity < 10) {
+                    arryCart[i].quantity++
+                    arryCart[i].total = arryCart[i].total + arryCart[i].price
+                    renderCart()
+                }
+            }
+
+        }
+        editQuantity()
+
+        //  delete caer 
+        function deleteCart() {
+            let deleteCart = document.querySelectorAll(".fa-delete-left")
+
+            deleteCart[i].onclick = () => {
+                arryCart.splice(i, 1)
+                renderCart()
+                if (arryCart == "") {
+                    closeItem.click()
+                }
+
+            }
+        }
+        deleteCart()
+
+    }
+
+    localStorage.setItem("product", JSON.stringify(arryCart))
+    localStorage.setItem("total", JSON.stringify(subTotalNum))
+
+}
+
+
+
+
 // =====================open add cart====================  //
 let closeItem = document.querySelector(".close-item")
 let cartItem = document.querySelector(".cart-item-modal")
@@ -387,13 +424,24 @@ closeItem.onclick = () => {
     cartItem.style.top = "-200%"
 }
 cartIcon.onclick = () => {
-    if (navCount.innerHTML === "0") {
+    if (navCount.innerHTML == "0") {
         alert("no product")
     } else {
         cartItem.style.top = "0"
-    }
 
+    }
 
 }
 
-product()
+
+
+
+
+
+
+
+
+
+
+
+

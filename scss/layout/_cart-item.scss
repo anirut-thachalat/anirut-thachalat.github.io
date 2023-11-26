@@ -122,24 +122,32 @@
         }
 
         .sub-total-box {
-
+            display: flex;
+            gap: 1rem;
+            justify-content: end;
+            align-items: center;
             width: 90%;
             margin: 0 auto;
             text-align: end;
             padding: 10px;
 
 
-            button {
-                padding: 10px;
-                border-radius: 10px;
-                background-color: $primary-color;
+
+            a {
                 font-weight: 700;
-                cursor: pointer;
+                background-color: green;
+                margin: 5px;
+                border-radius: 10px;
+                padding: 10px;
+                color: $background-color;
 
                 &:hover {
-                    background-color: $primary-hover;
+                    background-color: greenyellow;
+                    color: $text-color;
                 }
+
             }
+
         }
     }
 

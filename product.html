@@ -16,18 +16,18 @@
         <div class="container">
             <div class="nav-box">
                 <div class="logo">
-                    <a href="/index.html "><i class="fa-solid fa-bag-shopping"></i> <span>shopcart</span></a>
+                    <a href="#"><i class="fa-solid fa-bag-shopping"></i> <span>shopcart</span></a>
                 </div>
                 <ul class="nav-menu">
                     <button class="close-menu">X</button>
                     <li><a href="/index.html">home</a></li>
-                    <li><a href="#">product</a></li>
-                    <li><a href="#testimonial-page2">testimonial</a></li>
+                    <li><a href="/product.html">product</a></li>
+                    <li><a href="#testimonial">testimonial</a></li>
                 </ul>
                 <div class="nav-icon">
                     <i id="search-icon" class="fa-solid fa-magnifying-glass" onclick="openSearch()"></i>
                     <i id="user-icon" class="fa-solid fa-user" onclick="openUser()"></i>
-                    <i id="cart-icon" class="fa-solid fa-cart-shopping"><span id="count">0</span></i>
+                    <i id="cart-icon" class="fa-solid fa-cart-shopping"><span id="nav-count">0</span></i>
                     <i id="bars-icon" class="fa-solid fa-bars" onclick="openMenu()"></i>
                 </div>
             </div>
@@ -139,7 +139,22 @@
 
 
 
+    <!-- cart modal -->
 
+    <div class="cart-item-modal">
+        <div class="cart-item-box">
+            <button class="close-item">X</button>
+            <h2> your cart (<span class="count-item"> 3 </span> item )</h2>
+            <ul class="cart-item-list">
+                <!-- api -->
+            </ul>
+            <div class="sub-total-box">
+                <h3>sub total : <span class="sub-total" style="color: green;">0</span></h3>
+                <a href="/checkout.html" class="btn-checkout"> check out</a>
+            </div>
+        </div>
+    </div>
+    <!-- end cart -modal -->
 
 
 
@@ -227,6 +242,19 @@
 
     <!--==================== end footer ======================-->
     <script src="/js/script.js"></script>
+    <script>
+        async function product_page() {
+            await search()
+            await product()
+        }
+
+        product_page();
+
+
+
+
+    </script>
+
 </body>
 
 </html>

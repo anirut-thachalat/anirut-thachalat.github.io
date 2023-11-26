@@ -92,34 +92,11 @@
             <button class="close-item">X</button>
             <h2> your cart (<span class="count-item"> 3 </span> item )</h2>
             <ul class="cart-item-list">
-                <!-- <li>
-                    <div class="cart-item-img">
-                        <img src="/img/img-home.avif" alt="" width="60px" height="60px">
-                    </div>
-                    <div class="cart-item-info">
-                        <p>Samsung 49-Inch CHG90 144Hz Curved Gaming Monitor (LC49HG90DMNXZA) - Super Ultrawide Screen
-                            QLED </p>
-                        <div class="item-option">
-                            <p> size : m</p>
-
-                            <div class="item-quantity">
-                                <span class="item-price" style="color: red;"> 10$</span>
-                                <button class="item-reduce"> -</button>
-                                <span class="item-num"> 1 </span>
-                                <button class="item-increase"> +</button>
-                            </div>
-                            <div class="item-total">
-                                <span> total : <span style="color: green;">100$</span></span>
-                                <i class="fa-solid fa-delete-left"></i>
-                            </div>
-                        </div>
-                    </div>
-                </li> -->
-
+                <!-- api -->
             </ul>
             <div class="sub-total-box">
                 <h3>sub total : <span class="sub-total" style="color: green;">0</span></h3>
-                <button> check out</button>
+                <a href="/checkout.html" class="btn-checkout"> check out</a>
             </div>
         </div>
     </div>
@@ -164,7 +141,7 @@
             </div>
         </div>
     </section>
-    <!-- ========================= end new arrival ====================-->
+    <!-- =========================  end feature ====================-->
 
 
     <!-- ========================= new arrival ====================-->
@@ -305,7 +282,18 @@
     <!--==================== end footer ======================-->
     <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script src="/js/script.js"></script>
+    <script>
+        async function home() {
+            await search()
+            await feature()
+            await arrival()
+        }
+        home();
+
+    </script>
+
 </body>
 
 </html>

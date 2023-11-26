@@ -441,20 +441,26 @@ nav .nav-box .nav-icon #bars-icon {
   color: #f77f00;
 }
 .cart-item-modal .cart-item-box .sub-total-box {
+  display: flex;
+  gap: 1rem;
+  justify-content: end;
+  align-items: center;
   width: 90%;
   margin: 0 auto;
   text-align: end;
   padding: 10px;
 }
-.cart-item-modal .cart-item-box .sub-total-box button {
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #fcbf49;
+.cart-item-modal .cart-item-box .sub-total-box a {
   font-weight: 700;
-  cursor: pointer;
+  background-color: green;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
 }
-.cart-item-modal .cart-item-box .sub-total-box button:hover {
-  background-color: #f77f00;
+.cart-item-modal .cart-item-box .sub-total-box a:hover {
+  background-color: greenyellow;
+  color: #000000;
 }
 
 .view-cart {
@@ -725,4 +731,71 @@ footer .footer-box .footer-right i {
 }
 .product .product-box .btn-product .btn:hover {
   background-color: #f77f00;
+}
+.check-out {
+  width: 100%;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+}
+.check-out .check-out-box {
+  margin: 0 auto;
+  max-width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.check-out .check-out-box h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.check-out .check-out-box .check-out-icon {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+.check-out .check-out-box .check-out-icon i {
+  color: green;
+  cursor: pointer;
+}
+.check-out .check-out-box label {
+  font-weight: 600;
+  margin-left: 20px;
+}
+.check-out .check-out-box .check-group {
+  display: flex;
+  border: 1px solid gray;
+  margin: 10px 30px;
+  padding: 5px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+.check-out .check-out-box .check-group input {
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+.check-out .check-out-box .checkout-price {
+  margin-left: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: red;
+}
+.check-out .check-out-box a {
+  display: block;
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  background-color: green;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #000000;
+  text-align: center;
+}
+.check-out .check-out-box a:hover {
+  background-color: greenyellow;
 }/*# sourceMappingURL=main.css.map */
